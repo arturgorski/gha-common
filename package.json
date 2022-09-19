@@ -1,0 +1,39 @@
+{
+  "name": "gha-common",
+  "version": "1.0.0",
+  "description": "Set of shared GHA workflows and actions",
+  "scripts": {
+    "commit": "cz",
+    "prepare": "husky install",
+    "release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturgorski/gha-common.git"
+  },
+  "author": "Artur Gorski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arturgorski/gha-common/issues"
+  },
+  "homepage": "https://github.com/arturgorski/gha-common#readme",
+  "devDependencies": {
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "17.1.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.6",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "commitiquette": "^1.2.1",
+    "commitizen": "4.2.5",
+    "husky": "8.0.1",
+    "semantic-release": "^19.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "commitiquette"
+    }
+  }
+}
