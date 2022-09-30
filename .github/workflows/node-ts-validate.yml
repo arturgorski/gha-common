@@ -1,0 +1,36 @@
+name: Checkout common actions
+
+on:
+  workflow_call:
+    secrets:
+      token:
+        description: GitHub token to checkout repo
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.token }}
+
+      - name: Configure Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Transpile typescript sources
+        run: npm run ts:validate
