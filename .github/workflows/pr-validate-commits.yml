@@ -1,10 +1,23 @@
 name: Validate commit messages
 on:
   workflow_call:
+    inputs:
+      private-npm-registry-scope:
+        description: Provide scope in case you have tu install packages from the private NPM registry
+        type: string
+        required: false
+      private-npm-registry-url:
+        description: Url of the private registry
+        type: string
+        required: false
+
     secrets:
       github-token:
         description: GitHub token to checkout repo
         required: true
+      npm-token:
+        description: NPM token to publish package
+        required: false
 
 jobs:
   validate-commit-messages:

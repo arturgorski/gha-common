@@ -2,10 +2,23 @@ name: Checkout common actions
 
 on:
   workflow_call:
+    inputs:
+      private-npm-registry-scope:
+        description: Provide scope in case you have tu install packages from the private NPM registry
+        type: string
+        required: false
+      private-npm-registry-url:
+        description: Url of the private registry
+        type: string
+        required: false
+
     secrets:
       github-token:
         description: GitHub token to checkout repo
         required: true
+      npm-token:
+        description: NPM token to publish package
+        required: false
 
 jobs:
   build:
@@ -22,9 +35,13 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
+          registry-url: ${{ inputs.private-npm-registry-url }}
+          scope: ${{ inputs.private-npm-registry-scope }}
 
       - name: Install dependencies
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
 
       - name: Run tests
         run: npm test

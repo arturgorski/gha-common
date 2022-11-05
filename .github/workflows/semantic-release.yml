@@ -7,6 +7,14 @@ on:
         required: false
         type: boolean
         default: false
+      private-npm-registry-scope:
+        description: Provide scope in case you have tu install packages from the private NPM registry
+        type: string
+        required: false
+      private-npm-registry-url:
+        description: Url of the private registry
+        type: string
+        required: false
     secrets:
       github-token:
         description: GitHub token to checkout repo
@@ -41,10 +49,10 @@ jobs:
         run: npm run ts
 
       # According to npm docs:
-      # You can also provide a .npmignore file in the root of your package or in subdirectories,
+      # You can also provide a .npmignore file in the root of your package or in the subdirectories,
       # which will keep files from being included.
       # At the root of your package it will not override the "files" field, but in subdirectories it will.
-      # .npmignore usually excludes test files. Therefore, we have to copy it subdirectory to make it works
+      # .npmignore usually excludes test files. Therefore, we have to copy it to the subdirectory to make it works
       - name: Copy required assets to ./dist
         if: ${{ inputs.is-npm-package == true }}
         run: |
