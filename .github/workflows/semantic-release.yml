@@ -15,6 +15,7 @@ on:
         description: Url of the private registry
         type: string
         required: false
+
     secrets:
       github-token:
         description: GitHub token to checkout repo
@@ -38,11 +39,14 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
+          registry-url: ${{ inputs.private-npm-registry-url }}
+          scope: ${{ inputs.private-npm-registry-scope }}
 
       - name: Install dependencies
         run: npm ci
         env:
           HUSKY: 0
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
 
       - name: Build
         if: ${{ inputs.is-npm-package == true }}

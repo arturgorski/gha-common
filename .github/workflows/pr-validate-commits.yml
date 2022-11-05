@@ -36,9 +36,13 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
+          registry-url: ${{ inputs.private-npm-registry-url }}
+          scope: ${{ inputs.private-npm-registry-scope }}
 
       - name: Install dependencies
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
 
       - name: Validate commit messages
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
