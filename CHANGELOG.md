@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/arturgorski/gha-common/compare/v1.0.0...v1.0.1) (2022-11-05)
+
+
+### Bug Fixes
+
+* set proper configuration for private NPM registry ([dd424ca](https://github.com/arturgorski/gha-common/commit/dd424ca199b6338efcbfa9772781cfffe0051a2a))
+
 # 1.0.0 (2022-11-05)
 
 
