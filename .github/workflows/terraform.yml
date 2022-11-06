@@ -1,4 +1,4 @@
-name: Shared terraform workflow
+name: Terraform
 
 on:
   workflow_call:

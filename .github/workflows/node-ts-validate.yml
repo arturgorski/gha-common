@@ -1,8 +1,23 @@
-name: Checkout common actions
+name: Validate code
 
 on:
   workflow_call:
     inputs:
+      npm-script-name-lint:
+        description: Name of the NPM script that linters the code
+        type: string
+        required: false
+        default: lint
+      npm-script-name-test:
+        description: Name of the NPM script that runs tests
+        type: string
+        required: false
+        default: test
+      npm-script-name-ts-validate:
+        description: Name of the NPM script that validates typescript code integrity (tries to build app from TS sources)
+        type: string
+        required: false
+        default: ts:validate
       private-npm-registry-scope:
         description: Provide scope in case you have tu install packages from the private NPM registry
         type: string
@@ -11,6 +26,16 @@ on:
         description: Url of the private registry
         type: string
         required: false
+      should-lint-code:
+        description: indicates whether lint the code
+        type: boolean
+        required: false
+        default: true
+      should-run-tests:
+        description: indicates whether run tests
+        type: boolean
+        required: false
+        default: true
 
     secrets:
       github-token:
@@ -44,10 +69,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.npm-token }}
 
       - name: Run tests
-        run: npm test
+        if: ${{ inputs.should-run-tests == true }}
+        run: npm ${{ inputs.npm-script-name-test }}
 
       - name: Lint code
-        run: npm run lint
+        if: ${{ inputs.should-lint-code == true }}
+        run: npm run ${{ inputs.npm-script-name-lint }}
 
       - name: Transpile typescript sources
         run: npm run ts:validate
