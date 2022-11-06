@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/arturgorski/gha-common/compare/v1.0.1...v1.1.0) (2022-11-06)
+
+
+### Features
+
+* add basic Terraform workflow ([a717043](https://github.com/arturgorski/gha-common/commit/a7170437caa3ae92e5794f644803bac836f1c844))
+* parametrize NPM script names in validation workflow ([859a676](https://github.com/arturgorski/gha-common/commit/859a6766a1f865f8f8afd14c926f5bd982ced7a8))
+
 ## [1.0.1](https://github.com/arturgorski/gha-common/compare/v1.0.0...v1.0.1) (2022-11-05)
 
 
