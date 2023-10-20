@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/arturgorski/gha-common/compare/v1.1.0...v1.2.0) (2023-10-20)
+
+
+### Features
+
+* update checkout to v4 ([5de8931](https://github.com/arturgorski/gha-common/commit/5de8931d0b4a25caa24af327fe9a4deae39754ed))
+
 # [1.1.0](https://github.com/arturgorski/gha-common/compare/v1.0.1...v1.1.0) (2022-11-06)
 
 
